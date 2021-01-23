@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{2f6be38d-3c41-4d28-af1a-a951002a0e44}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include">
+      <UniqueIdentifier>{1b7239e0-617e-45b9-836f-f65bd4d40437}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\plusctx">
+      <UniqueIdentifier>{691f9b39-aee3-4cb0-a45d-a5f07ea1d2cd}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\test\unit_test\main.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\include\plusctx\plusctx.hpp">
+      <Filter>include\plusctx</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
