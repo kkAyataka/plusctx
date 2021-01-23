@@ -7,7 +7,9 @@
 #ifndef PLUSCTX_HPP__
 #define PLUSCTX_HPP__
 
+#include <deque>
 #include <string>
+
 
 namespace plusctx {
 namespace detail {
@@ -52,7 +54,16 @@ constexpr const char * shorten_file_name(const char * fileName) {
 
 } // namespace plusctx::detail
 
-struct Context {
+class Context {
+private:
+    inline static std::deque<Context *> & get_context_stack() {
+        thread_local std::deque<Context *> stack;
+        return stack;
+    }
+
+    friend const std::deque<Context *> & get_context_stack();
+
+public:
     Context(
         const std::string name,
         const std::string func_name,
@@ -64,9 +75,12 @@ struct Context {
         rich_func_name(rich_func_name),
         file_name(file_name),
         line_no(std::to_string(line_no)) {
+
+        get_context_stack().push_back(this);
     }
 
     virtual ~Context() {
+        get_context_stack().pop_back();
     }
 
     const std::string name;
@@ -75,6 +89,10 @@ struct Context {
     const std::string file_name;
     const std::string line_no;
 };
+
+inline const std::deque<Context *> & get_context_stack() {
+    return Context::get_context_stack();
+}
 
 } // namespace plusctx
 
