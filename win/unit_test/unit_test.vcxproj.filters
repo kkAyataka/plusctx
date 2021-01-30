@@ -1,19 +1,40 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="src">
-      <UniqueIdentifier>{2f6be38d-3c41-4d28-af1a-a951002a0e44}</UniqueIdentifier>
-    </Filter>
     <Filter Include="include">
       <UniqueIdentifier>{1b7239e0-617e-45b9-836f-f65bd4d40437}</UniqueIdentifier>
     </Filter>
     <Filter Include="include\plusctx">
       <UniqueIdentifier>{691f9b39-aee3-4cb0-a45d-a5f07ea1d2cd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="lib">
+      <UniqueIdentifier>{98d19d85-1433-48d9-a4a5-0db5d1641132}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="lib\include">
+      <UniqueIdentifier>{6ca48c79-f310-4932-a603-7a4a6b449812}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="lib\include\gtest">
+      <UniqueIdentifier>{2d325b23-2fe8-4441-8a3a-eabb001213e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{2f6be38d-3c41-4d28-af1a-a951002a0e44}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\test">
+      <UniqueIdentifier>{339edbfc-4d42-4af7-96fc-292d2aa71ddf}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\test\unit_test\main.cpp">
       <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\lib\include\gtest\src\gtest-all.cc">
+      <Filter>lib\include\gtest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\unit_test\test\plusctx-test.cpp">
+      <Filter>src\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\unit_test\test\multi_file-test.cpp">
+      <Filter>src\test</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
