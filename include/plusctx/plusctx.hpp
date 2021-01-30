@@ -11,9 +11,14 @@
 #include <string>
 
 
+/** Version number.
+ * 0x01020304 -> 1.2.3.4 */
+#define PLUSCTX_VERSION 0x01000000
+
 namespace plusctx {
 namespace detail {
 
+/** @private */
 constexpr bool is_match(const char * s1, const char * s2) {
     for (std::size_t i = 0; s1[i] && s2[i]; ++i) {
         if (s1[i] != s2[i]) {
@@ -24,6 +29,7 @@ constexpr bool is_match(const char * s1, const char * s2) {
     return true;
 }
 
+/** @private */
 constexpr const char * shorten_file_name(const char * fileName) {
 #ifdef _MSC_VER
     const char sep = '\\';
@@ -54,8 +60,16 @@ constexpr const char * shorten_file_name(const char * fileName) {
 
 } // namespace plusctx::detail
 
+/**
+ * Context class.
+ *
+ * Context has a holder for a context name, function name, file name, and line number.
+ * Usually, use PLUSCTX_CTX macro for creating a context object.
+ * Or define a useful new macro.
+ */
 class Context {
 private:
+    /** @private */
     inline static std::deque<Context *> & get_context_stack() {
         thread_local std::deque<Context *> stack;
         return stack;
@@ -90,6 +104,10 @@ public:
     const std::string line_no;
 };
 
+/**
+ * Gets a context stack for each current thread.
+ * A context object is managed per thread.
+ */
 inline const std::deque<Context *> & get_context_stack() {
     return Context::get_context_stack();
 }
@@ -102,6 +120,9 @@ inline const std::deque<Context *> & get_context_stack() {
 #define PLUSCTX_RICHFUNCNAME __PRETTY_FUNCTION__
 #endif
 
+/**
+ * Macro for creating context.
+ */
 #define PLUSCTX_CTX(name) plusctx::Context plusctx_ctx__( \
     name, \
     __func__, \
