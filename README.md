@@ -15,6 +15,11 @@ Creates a context object by the Macro, and the object has the following.
 Example
 -------
 
+- Create context by PLUSCTX_CTX macro at the head in the function
+    - Context is saved as the stack per thread (thread_local)
+    - Context is removed from the stack when leaving the block scope
+- Get caller context from in the sub-function
+
 ```cpp
 #include "plusctx/plusctx.hpp"
 
@@ -68,3 +73,9 @@ void sub2() {
                                                 // 2nd >main>sub2      // from main
 }
 ```
+
+
+LICENSE
+-------
+
+[Boost Software License](LICENSE)
